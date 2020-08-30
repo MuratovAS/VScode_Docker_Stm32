@@ -1,0 +1,93 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (console)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "runToMain": true,
+            "showDevDebugOutput": false,
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "svdFile": "${workspaceFolder}/STM32F745.svd",
+            "configFiles": [
+                "${workspaceFolder}/.vscode/openocd.cfg"
+            ],
+            "swoConfig": 
+            {
+                "enabled": true,
+                "cpuFrequency": 216000000,
+                "swoFrequency": 2000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "type": "console",
+                        "port": 0,
+                        "label": "output",
+                        "encoding":"ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Debug (graph)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "runToMain": true,
+            "showDevDebugOutput": false,
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "svdFile": "${workspaceFolder}/STM32F745.svd",
+            "configFiles": [
+                "${workspaceFolder}/.vscode/openocd.cfg"
+            ],
+            "swoConfig": 
+            {
+                "enabled": true, 
+                "decoders": [
+                    {
+                        "type": "graph",
+                        "port": 0,      
+                        "encoding": "unsigned",
+                        "graphId": "1", 
+                        "scale": 1
+                    },
+                    {
+                        "type": "graph",
+                        "port": 1,      
+                        "encoding": "unsigned",
+                        "graphId": "2", 
+                        "scale": 1
+                    },
+                ],
+                "cpuFrequency": 216000000,   
+                "swoFrequency":  2000000,   
+                "source": "probe",
+            },
+            "graphConfig": [
+                {
+                    //"label": "Graph 1",
+                    "timespan": 30,
+                    "type": "realtime",
+                    "annotate": false,
+                    "maximum": 256,
+                    "minimum": 0,
+                    "plots": [
+                        {
+                            "graphId": "1", 
+                            "label": "data 1",
+                            "color": "#53753c"
+                        },
+                        {
+                            "graphId": "2", 
+                            "label": "data 2",
+                            "color": "#955f20"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+}

@@ -1,0 +1,34 @@
+{
+	"buildType": {
+		"default": "Debug",
+		"choices": {
+			"debug": {
+				"short": "Debug",
+				"long": "Emit debug information without performing optimizations",
+				"buildType": "Debug"
+			},
+			"release": {
+				"short": "Release",
+				"long": "Enable optimizations, omit debug info",
+				"buildType": "Release"
+			}
+		}
+	},
+	"flashSection": {
+		"default": "Bootloader",
+		"choices": {
+			"BOOT": {
+				"short": "Bootloader",
+				"settings": {
+					"FLASH_SECTION": "Boot"
+				}
+			},
+			"APP": {
+				"short": "Application",
+				"settings": {
+					"FLASH_SECTION": "App"
+				}
+			}
+		}
+	}
+}

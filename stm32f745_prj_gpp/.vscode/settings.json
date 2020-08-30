@@ -1,0 +1,11 @@
+{
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"cmake.configureOnOpen": false,
+	"cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "cmake/CompilerSelector.cmake",
+		"CROSS_COMPILE": "/opt/gcc-arm-none-eabi/bin/arm-none-eabi-",
+		"compileCommands": "build/compile_commands.json"
+	},
+	"C_Cpp.errorSquiggles": "Enabled"
+}

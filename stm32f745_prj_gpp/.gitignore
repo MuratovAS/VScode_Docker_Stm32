@@ -1,0 +1,8 @@
+build/*
+
+.mxproject
+Makefile
+
+App/STM32F745ZGTx_FLASH.ld
+Boot/STM32F745ZGTx_FLASH.ld
+

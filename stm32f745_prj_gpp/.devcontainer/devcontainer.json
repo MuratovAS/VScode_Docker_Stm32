@@ -1,0 +1,40 @@
+{
+	"name": "ARM-GPP",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	//An array of Docker CLI arguments that should be used when running the container. Defaults to []. For example, this allows ptrace based debuggers like C++ to work in the container:
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--privileged"
+	],
+	//"remoteEnv": {"MY_VARIABLE":"/dev/bus/usb:/dev/bus/usb"},
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-vscode.cpptools",
+		"ms-vscode.cmake-tools",
+		"marus25.cortex-debug",
+		"dan-c-underwood.arm",
+		"wayou.vscode-todo-highlight",
+		"twxs.cmake",
+		"cschlosser.doxdocgen",
+		"mhutchie.git-graph",
+		"keroc.hex-fmt",
+		"ms-vscode.cpptools",
+		"ZixuanWang.linkerscript"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	//"postCreateCommand": "arm-none-eabi-gcc --version",
+	//Indicates whether VS Code should stop the container when the VS Code window is closed / shut down.
+	"shutdownAction": "stopContainer",
+	// Comment out this line to run as root instead.
+	"remoteUser": "user"
+}

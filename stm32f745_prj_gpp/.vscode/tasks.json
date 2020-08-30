@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CPU: Download and run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${workspaceFolder}/.vscode/openocd.cfg",
+                "-c",
+                "program ${command:cmake.launchTargetPath} verify reset exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Reset and run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${workspaceFolder}/.vscode/openocd.cfg",
+                "-c init",
+                "-c reset",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${workspaceFolder}/.vscode/openocd.cfg",
+                "-c init",
+                "-c resume",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Stop",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${workspaceFolder}/.vscode/openocd.cfg",
+                "-c init",
+                "-c halt",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ROM: Readelf",
+            "type": "shell",
+            "command": "arm-none-eabi-readelf",
+            "args": [
+                "-S",
+                "${command:cmake.launchTargetPath}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ROM: Size",
+            "type": "shell",
+            "command": "arm-none-eabi-size",
+            "args": [
+                "${command:cmake.launchTargetPath}"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
