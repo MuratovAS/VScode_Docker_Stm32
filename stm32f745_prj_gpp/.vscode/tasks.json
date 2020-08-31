@@ -53,6 +53,15 @@
             "problemMatcher": []
         },
         {
+            "label": "CPU: ST-link info",
+            "type": "shell",
+            "command": "st-info",
+            "args": [
+                "--probe"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "ROM: Readelf",
             "type": "shell",
             "command": "arm-none-eabi-readelf",
