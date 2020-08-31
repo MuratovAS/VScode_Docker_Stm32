@@ -1,4 +1,4 @@
-# VScode и Docker мощный набор для разработки под Stm32
+# VScode и Docker, мощный набор для разработки под Stm32
 
 VSCode + Docker (GCC-ARM + CMake + OpenOCD) = IDE
 
