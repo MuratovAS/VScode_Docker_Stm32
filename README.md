@@ -153,6 +153,12 @@ chmod +x ./docker-install-ubuntu.sh  && ./docker-install-ubuntu.sh
 
 О: Как было сказано выше, ПРОГРАММАТОР нужно подключать ДО запуска контейнера, то есть до запуска IDE
 
-В:
+В: Программатор виден в системе, но не доступен из Docker.
 
-О:
+О: Одной из причин может быть STM32CubeIDE, который добавляет провила в `/etc/udev/rules.d/` для ST-Link. Починить можно так:
+
+```bash
+sudo usermod -aG docker $USER
+sudo usermod -aG plugdev $USER
+sudo udevadm control --reload-rules
+```
