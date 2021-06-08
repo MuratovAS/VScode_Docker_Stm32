@@ -40,19 +40,17 @@
         "c-cpp-flylint.language": "c",
         "c-cpp-flylint.clang.enable": false,
         "c-cpp-flylint.flexelint.enable": false,
-        
-        "astyle.cmd_options": [
-            "--options=${workspaceFolder}/.astylerc",
-        ],
+        "c-cpp-flylint.lizard.enable": false,
+        "c-cpp-flylint.flawfinder.enable": false,
         "c-cpp-flylint.cppcheck.addons": [
             "/opt/CppCheck/addons/misra.json"
         ],
         "c-cpp-flylint.cppcheck.severityLevels": {
             "style": "Hint"
         },
-        "files.associations": {
-            "*.in": "cpp",
-            "mainuser.h": "c"
-        },
+        
+        "astyle.cmd_options": [
+            "--options=${workspaceFolder}/.astylerc",
+        ],
     }
 }

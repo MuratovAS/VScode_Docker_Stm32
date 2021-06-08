@@ -27,7 +27,7 @@ void restore()
 
 void setup()
 {
-	logger.info("prj:%s_%s\n", PROJECT_NAME, FW_VERSION);
+	logger.info("prj:%s_%s\n %s", PROJECT_NAME, FW_VERSION);
 }
 
 void loop()

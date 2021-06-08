@@ -32,7 +32,7 @@
 		//"be5invis.vscode-icontheme-nomo-dark",
 		"mhutchie.git-graph",
 
-		"jbenden.c-cpp-flylint",
+		"jbenden.c-cpp-flylint@1.8.2",
 		"chiehyu.vscode-astyle"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

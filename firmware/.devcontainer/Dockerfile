@@ -33,11 +33,11 @@ RUN apt install -y astyle
 
 RUN apt install -y cppcheck
 ##add misra-c
-RUN mkdir -p /opt/CppCheck/addons
-RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/misra.py
-RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/cppcheckdata.py
-RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/misra_9.py
-RUN printf "{\n    \"script\": \"misra.py\",\n    \"args\": [\n        \"--rule-texts=/opt/CppCheck/addons/misra.txt\"\n    ]\n}"  > /opt/CppCheck/addons/misra.json
+#RUN mkdir -p /opt/CppCheck/addons
+#RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/misra.py
+#RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/cppcheckdata.py
+#RUN wget -P /opt/CppCheck/addons/ https://raw.githubusercontent.com/danmar/cppcheck/main/addons/misra_9.py
+#RUN printf "{\n    \"script\": \"misra.py\",\n    \"args\": [\n        \"--rule-texts=/opt/CppCheck/addons/misra.txt\"\n    ]\n}"  > /opt/CppCheck/addons/misra.json
 #NOTE: specify a URL to the txt
 #RUN wget -O /opt/CppCheck/addons/misra.txt https://text/text.txt
 
