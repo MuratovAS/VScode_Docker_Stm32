@@ -1,0 +1,20 @@
+set(CROSS_COMPILE "arm-none-eabi-")
+
+set(triple arm-none-eabi)
+SET(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+set(CMAKE_C_COMPILER "${CROSS_COMPILE}gcc")
+set(CMAKE_C_COMPILER_TARGET ${triple})
+set(CMAKE_CXX_COMPILER "${CROSS_COMPILE}g++")
+set(CMAKE_CXX_COMPILER_TARGET ${triple})
+set(CMAKE_ASM_COMPILER "${CROSS_COMPILE}gcc")
+set(CMAKE_ASM_COMPILER_TARGET ${triple})
+
+set(CMAKE_AR "${CROSS_COMPILE}ar")
+set(CMAKE_AR_TARGET ${triple})
+set(CMAKE_OBJCOPY "${CROSS_COMPILE}objcopy")
+set(CMAKE_OBJCOPY_TARGET ${triple})
+set(CMAKE_OBJDUMP "${CROSS_COMPILE}objdump")
+set(CMAKE_OBJDUMP_TARGET ${triple})
+set(SIZE "${CROSS_COMPILE}size")
+set(SIZE_TARGET ${triple})

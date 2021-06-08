@@ -1,0 +1,58 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.stickyTabStops": true,
+        "todohighlight.keywords": [
+            {
+                "text": "NOTE:",
+                "color": "#ffffff",
+                "backgroundColor": "#4169E1",
+                "overviewRulerColor": "#0000FF"
+            },
+            {
+                "text": "BUG:",
+                "color": "#ffffff",
+                "backgroundColor": "#32CD32",
+                "overviewRulerColor": "#32CD32"
+            },
+        ],
+        "cortex-debug.enableTelemetry": false,
+        
+        "cmake.revealLog": "always",
+        "cmake.statusbar.visibility": "compact",
+        "cmake.configureOnOpen": true,
+        "cmake.configureSettings": {
+            "IDE": "VSCODE",
+            "ASTYLE": "CHANGES",
+            //"CROSS_COMPILE": "/opt/gcc-arm-none-eabi/bin/arm-none-eabi-",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        },
+        "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+        "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+        "C_Cpp.intelliSenseEngineFallback": "Enabled",
+        "C_Cpp.vcpkg.enabled": false,
+        "C_Cpp.formatting": "Disabled",
+
+        "c-cpp-flylint.language": "c",
+        "c-cpp-flylint.clang.enable": false,
+        "c-cpp-flylint.flexelint.enable": false,
+        
+        "astyle.cmd_options": [
+            "--options=${workspaceFolder}/.astylerc",
+        ],
+        "c-cpp-flylint.cppcheck.addons": [
+            "/opt/CppCheck/addons/misra.json"
+        ],
+        "c-cpp-flylint.cppcheck.severityLevels": {
+            "style": "Hint"
+        },
+        "files.associations": {
+            "*.in": "cpp",
+            "mainuser.h": "c"
+        },
+    }
+}

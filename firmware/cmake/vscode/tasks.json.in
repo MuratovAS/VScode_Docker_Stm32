@@ -1,0 +1,97 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CPU: Download and run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg",
+                "-c",
+                "program ${SKOBKA}command:cmake.launchTargetPath} verify reset exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Reset and run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg",
+                "-c init",
+                "-c reset",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Run",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg",
+                "-c init",
+                "-c resume",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: Stop",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg",
+                "-c init",
+                "-c halt",
+                "-c exit"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CPU: ST-link info",
+            "type": "shell",
+            "command": "st-info",
+            "args": [
+                "--probe"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ROM: Readelf",
+            "type": "shell",
+            "command": "arm-none-eabi-readelf",
+            "args": [
+                "-S",
+                "${SKOBKA}command:cmake.launchTargetPath}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ROM: Size",
+            "type": "shell",
+            "command": "arm-none-eabi-size",
+            "args": [
+                "${SKOBKA}command:cmake.launchTargetPath}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "PRJ: Run Unit test",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "${SKOBKA}workspaceFolder}/Test/run.sh"
+            ],
+            "presentation": {
+                "focus": false
+            },
+            "problemMatcher": []
+        }
+
+    ]
+}

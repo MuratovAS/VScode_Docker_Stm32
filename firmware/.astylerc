@@ -1,0 +1,13 @@
+--style=allman
+--indent=force-tab=4
+--indent-classes
+--indent-namespaces
+--indent-preproc-block
+--indent-col1-comments
+--align-pointer=type
+--pad-header
+--align-reference=type
+--break-one-line-headers
+--remove-braces
+--attach-return-type
+--pad-oper

@@ -1,0 +1,36 @@
+#ifndef __BUILD_INFO_H__
+#define __BUILD_INFO_H__
+
+#include <stdint.h>
+
+/**
+ * Build info
+ * */
+#define PROJECT_NAME                "@PRJ_NAME@"
+#define FW_VERSION                  "@PRJ_VERSION@"
+#define BOARD_MCU                   '@MCU_BOARD@'
+#define BOARD_REVISION              '@BOARD_REV@'
+#define BUILD_TIMESTAMP             @BUILD_TIMESTAMP@UL
+#define GIT_CURRENT_BRANCH          "@APP_CURRENT_BRANCH@"
+#define GIT_IS_MASTER_BRANCH        @APP_IS_MASTER_BRANCH@U
+#define GIT_REVISION_FULL           "@APP_GIT_COMMIT@"
+#define GIT_REVISION_SHORT          0x@APP_GIT_COMMIT_HEX@UL
+
+/**
+ * Memory layout
+ * */
+#define MCU_FLASH_KB                @MCU_FLASH_KB@UL
+#define MCU_RAM_KB                  @MCU_RAM_KB@UL
+
+/**
+ * Section sizes and their addresses
+ * */
+#define BOOT_ORIGIN                 @BOOT_ORIGIN@UL
+#define SETT_ORIGIN                 @SETT_ORIGIN@UL
+#define APPL_ORIGIN                 @APPL_ORIGIN@UL
+
+#define BOOT_SIZE_KB                @BOOT_SIZE_KB@UL
+#define SETT_SIZE_KB                @SETT_SIZE_KB@UL
+#define APPL_SIZE_KB                @APPL_SIZE_KB@UL
+
+#endif // __BUILD_INFO_H__

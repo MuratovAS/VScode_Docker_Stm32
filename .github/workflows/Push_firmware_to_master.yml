@@ -1,0 +1,109 @@
+name: push firmware to master
+
+on:
+  push:
+    branches:
+    - 'master'
+    paths:
+    - 'firmware/**'
+
+jobs:
+  build-debug:
+    name: Build [Debug] and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: fiam/arm-none-eabi-gcc@v1
+      with:
+        release: '9-2020-q2' # The arm-none-eabi-gcc release to use.
+      
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/firmware/
+
+    - name: Configure CMake [Debug]
+      working-directory: ${{github.workspace}}/firmware/
+      shell: bash
+      run: cmake -B${{github.workspace}}/firmware/build -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${{github.workspace}}/firmware/cmake/arm_toolchain.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -G "Unix Makefiles"
+  
+    - name: Build [Debug]
+      working-directory: ${{github.workspace}}/firmware/
+      shell: bash
+      run:  cmake --build ${{github.workspace}}/firmware/build --config Debug --target all
+
+    - name: View build info [all]
+      shell: bash
+      working-directory: ${{github.workspace}}/firmware/build
+      run: |
+        for file in generated/*/build_info.h
+        do
+           echo "===================================="
+           echo "$file"
+           echo " "
+           cat "$file" 
+        done 
+      
+    - name: Run Test
+      shell: bash
+      working-directory: ${{github.workspace}}/firmware/build/Test
+      run: |
+        for file in UT_*
+        do
+            ./$file
+            if [ $? == 0 ]
+            then
+                GOODCOUNT=$(($GOODCOUNT+1))
+            fi
+            TOTCOUNT=$(($TOTCOUNT+1))
+        done
+        echo -n "Total of tests" $TOTCOUNT", completed successfully" $GOODCOUNT
+        
+  build-release:
+    name: Build [Release] and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: fiam/arm-none-eabi-gcc@v1
+      with:
+        release: '9-2020-q2' # The arm-none-eabi-gcc release to use.
+    
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/firmware/
+
+    - name: Configure CMake [Release]
+      working-directory: ${{github.workspace}}/firmware/
+      shell: bash
+      run: cmake -B${{github.workspace}}/firmware/build -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${{github.workspace}}/firmware/cmake/arm_toolchain.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -G "Unix Makefiles"
+  
+    - name: Build [Release]
+      working-directory: ${{github.workspace}}/firmware/
+      shell: bash
+      run:  cmake --build ${{github.workspace}}/firmware/build --config Release --target all
+
+    - name: View build info [all]
+      shell: bash
+      working-directory: ${{github.workspace}}/firmware/build
+      run: |
+        for file in generated/*/build_info.h
+        do
+           echo "===================================="
+           echo "$file"
+           echo " "
+           cat "$file" 
+        done 
+      
+    - name: Run Test
+      shell: bash
+      working-directory: ${{github.workspace}}/firmware/build/Test
+      run: |
+        for file in UT_*
+        do
+            ./$file
+            if [ $? == 0 ]
+            then
+                GOODCOUNT=$(($GOODCOUNT+1))
+            fi
+            TOTCOUNT=$(($TOTCOUNT+1))
+        done
+        echo -n "Total of tests" $TOTCOUNT", completed successfully" $GOODCOUNT

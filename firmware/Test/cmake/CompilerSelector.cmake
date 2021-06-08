@@ -1,0 +1,7 @@
+SET(CMAKE_C_COMPILER gcc)
+SET(CMAKE_CXX_COMPILER g++)
+set(CMAKE_ASM_COMPILER gcc)
+set(CMAKE_AR ar)
+set(CMAKE_OBJCOPY objcopy)
+set(CMAKE_OBJDUMP objdump)
+set(SIZE size)

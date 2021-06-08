@@ -1,0 +1,110 @@
+{
+    "version": "0.2.0",
+    "configurations": [          
+        {
+            "name": "Debug (console) [${PRJ_NAME}_${MCU_BOARD}]",
+            "type": "cortex-debug",
+            "request": "launch",
+            "runToMain": true,
+            "showDevDebugOutput": false,
+            "servertype": "openocd",
+            "cwd": "${SKOBKA}workspaceFolder}",
+            "executable": "${SKOBKA}command:cmake.launchTargetPath}",
+            "svdFile": "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.svd",
+            "configFiles": [
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg"
+            ],
+            "swoConfig": 
+            {
+                "enabled": true,
+                "cpuFrequency": ${OPENOCD_CPU_FREQ},
+                "swoFrequency": 2000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "type": "console",
+                        "port": 0,
+                        "label": "output",
+                        "encoding":"ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Debug (graph) [${PRJ_NAME}_${MCU_BOARD}]",
+            "type": "cortex-debug",
+            "request": "launch",
+            "runToMain": true,
+            "showDevDebugOutput": false,
+            "servertype": "openocd",
+            "cwd": "${SKOBKA}workspaceFolder}",
+            "executable": "${SKOBKA}command:cmake.launchTargetPath}",
+            "svdFile": "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.svd",
+            "configFiles": [
+                "${SKOBKA}workspaceFolder}/openocd/${OPENOCD_SCRIPT_NAME}.cfg"
+            ],
+            "swoConfig": 
+            {
+                "enabled": true, 
+                "decoders": [
+                    {
+                        "type": "graph",
+                        "port": 0,      
+                        "encoding": "unsigned",
+                        "graphId": "1", 
+                        "scale": 1
+                    },
+                    {
+                        "type": "graph",
+                        "port": 1,      
+                        "encoding": "unsigned",
+                        "graphId": "2", 
+                        "scale": 1
+                    },
+                ],
+                "cpuFrequency": ${OPENOCD_CPU_FREQ},   
+                "swoFrequency":  2000000,   
+                "source": "probe",
+            },
+            "graphConfig": [
+                {
+                    //"label": "Graph 1",
+                    "timespan": 10,
+                    "type": "realtime",
+                    "annotate": false,
+                    "maximum": 256,
+                    "minimum": 0,
+                    "plots": [
+                        {
+                            "graphId": "1", 
+                            "label": "data 1",
+                            "color": "#53753c"
+                        },
+                        {
+                            "graphId": "2", 
+                            "label": "data 2",
+                            "color": "#955f20"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Debug C++ [UT]",
+            "type": "cppdbg",
+            "request": "launch",
+            "stopAtEntry": true,
+            "program": "${SKOBKA}command:cmake.launchTargetPath}",
+            "environment": [{ "name": "squid", "value": "clam" }],
+            "cwd": "${SKOBKA}workspaceFolder}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+    ]
+}

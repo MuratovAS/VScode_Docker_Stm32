@@ -1,0 +1,17 @@
+{
+	"buildType": {
+		"default": "Debug",
+		"choices": {
+			"debug": {
+				"short": "Debug",
+				"long": "Emit debug information without performing optimizations",
+				"buildType": "Debug"
+			},
+			"release": {
+				"short": "Release",
+				"long": "Enable optimizations, omit debug info",
+				"buildType": "Release"
+			}
+		}
+	}
+}

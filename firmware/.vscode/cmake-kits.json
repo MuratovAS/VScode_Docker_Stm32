@@ -1,0 +1,6 @@
+[
+	{
+		"name": "ARM",
+		"toolchainFile": "${workspaceFolder}/cmake/arm_toolchain.cmake"
+	}
+]
