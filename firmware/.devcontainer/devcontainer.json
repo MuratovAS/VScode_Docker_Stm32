@@ -20,8 +20,8 @@
 		"ms-vscode.cpptools",
 		"ms-vscode.cmake-tools",
 		"twxs.cmake",
-		"marus25.cortex-debug",
-		
+		"marus25.cortex-debug@0.3.10",
+
 		"wayou.vscode-todo-highlight",
 		"cschlosser.doxdocgen",
 		"dan-c-underwood.arm",
